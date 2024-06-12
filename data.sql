@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 INSERT INTO books (title, form, isbn, summary, detail, author, pages, contents, price, pub_date)
 VALUES ("어린왕자들", "종이책", 0, "어리다..", "많이 어리다..", "김어림", 100, "목차입니다.", 20000, "2019-01-01");
-=======
-INSERT INTO books (title, form, isbn, summary, detail, author, pages, contents, price, pub_date) VALUES ('어린왕자들', '종이책', 0, '어리다..', '많이 어리다..', '김어림', 100, '목차입니다.', 20000, '2019-01-01');
->>>>>>> 7633904 (docs: 0411)
 
 INSERT INTO books (title, form, isbn, summary, detail, author, pages, contents, price, pub_date)
 VALUES ("신데렐라들", "종이책", 1, "유리구두..", "투명한 유리구두..", "김구두", 100, "목차입니다.", 20000, "2023-12-01");
@@ -33,7 +29,6 @@ INSERT INTO books (title, img, category_id, form, isbn, summary, detail, author,
 VALUES ("효녀 심청", 12, 0, "종이책", 9, "심청아..", "공양미 삼백석..", "김심청", 100, "목차입니다.", 20000, "2023-01-15");
 
 INSERT INTO books (title, img, category_id, form, isbn, summary, detail, author, pages, contents, price, pub_date)
-<<<<<<< HEAD
 VALUES ("혹부리 영감", 22, 2, "ebook", 10, "노래 주머니..", "혹 두개 되버림..", "김영감", 100, "목차입니다.", 20000, "2023-06-05");
 
 SELECT * FROM books LEFT
@@ -96,6 +91,3 @@ SELECT last_insert_id();
 
 // 결제된 도서 장바구니 삭제
 DELETE FROM cartItems WHERE id IN (1,2,3); 
-=======
-VALUES ("혹부리 영감", 22, 2, "ebook", 10, "노래 주머니..", "혹 두개 되버림..", "김영감", 100, "목차입니다.", 20000, "2023-06-05");
->>>>>>> 7633904 (docs: 0411)

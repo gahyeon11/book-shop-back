@@ -9,7 +9,6 @@ const likeRouter = require('./routes/likes');
 const cartRouter = require('./routes/carts');
 const orderRouter = require('./routes/orders');
 
-<<<<<<< HEAD
 const cors = require('cors');
 
 // 특정 origin을 허용하는 경우
@@ -28,18 +27,6 @@ app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next();
 });
-=======
-app.listen(process.env.PORT); //유의미한 포트 넘버 지정
-// app.listen(9999)
-
-const userRouter = require('./routes/users')
-const bookRouter = require('./routes/books')
-const categoryRouter = require('./routes/category')
-
-const likeRouter = require('./routes/likes')
-const cartRouter = require('./routes/carts')
-const orderRouter = require('./routes/orders')
->>>>>>> 7633904 (docs: 0411)
 
 app.use("/users", userRouter);
 app.use("/books", bookRouter);

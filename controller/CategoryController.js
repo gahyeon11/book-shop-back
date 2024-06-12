@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const conn = require('../mariadb'); // db 모듈
 const {StatusCodes} = require('http-status-codes'); // statud code 모듈
 
@@ -19,29 +18,3 @@ const allCategory = (req,res) => {
 module.exports = {
     allCategory
 };
-=======
-//김가현
-const conn = require('../mariadb');
-const { StatusCodes } = require('http-status-codes');
-
-
-//카테고리 전체 목록 리스트
-const allCategory = (req, res) => {
-
-    let sql = "SELECT * FROM category";
-    conn.query(sql,
-        (err, results) => {
-            if (err) {
-                console.log(err)
-                return res.status(StatusCodes.BAD_REQUEST).end();
-            }
-
-            return res.status(StatusCodes.OK).json(results);
-
-
-        })
-
-}
-
-module.exports = { allCategory }
->>>>>>> 7633904 (docs: 0411)

@@ -1,29 +1,13 @@
-<<<<<<< HEAD
 const conn = require('../mariadb'); // db 모듈
 const {StatusCodes} = require('http-status-codes'); // statud code 모듈
 const jwt = require('jsonwebtoken'); // jwt 모듈
 const crypto = require('crypto'); // crypto 모듈 : 암호화
 const dotenv = require('dotenv'); // dotenv 모듈
-=======
-//0410 김가현
-
-const conn = require('../mariadb');
-const { StatusCodes } = require('http-status-codes')
-
-const jwt = require('jsonwebtoken');
-
-const dotenv = require('dotenv');
-const crypto = require('crypto');
-
-const { query } = require('express');
-
->>>>>>> 7633904 (docs: 0411)
 dotenv.config();
 
 const join = (req,res) => {
     const {email, password} = req.body;
 
-<<<<<<< HEAD
     let sql = 'INSERT INTO users (email, password, salt) VALUES (?, ?, ?)';
     
     // 암호화된 비밀번호와 salt 값을 같이 DB에 저장 
@@ -32,18 +16,6 @@ const join = (req,res) => {
     
     let values = [email, hashPassword, salt];
     conn.query(sql, values,
-=======
-    let sql = `INSERT INTO users (email, password, salt) VALUES (?, ?, ?)`
-
-    // 암호화된 비밀번호와 salt 값을 db에 저장한다. 
-    const salt = crypto.randomBytes(10).toString('base64')
-    const hashPassword = crypto.pbkdf2Sync(password, salt, 10000, 10, 'sha512').toString('base64')
-    // 회원가입 시 비밀번호를 암호화해서 암호화된 비밀번호와, salt값을 같이 저장
-
-    let values = [email, hashPassword, salt]
-    conn.query(
-        sql, values,
->>>>>>> 7633904 (docs: 0411)
         (err, results) => {
             if(err) {
                 console.log(err);
@@ -97,22 +69,11 @@ const login = (req,res) => {
             } else {
                 return res.status(StatusCodes.UNAUTHORIZED).end();
             }
-<<<<<<< HEAD
         })
 };
 
 const passwordResetRequest = (req,res) => {
     const {email} = req.body;
-=======
-            else {
-                res.status(StatusCodes.UNAUTHORIZED).end()  //401: Unauthorized 403: Forbidden 접근 권한 없음
-            }
-        }
-    );
-}
-//김가현
-const passwordResetRequest = (req, res) => {
->>>>>>> 7633904 (docs: 0411)
 
     let sql = 'SELECT * FROM users WHERE email = ?';
     conn.query(sql, email,
@@ -131,38 +92,6 @@ const passwordResetRequest = (req, res) => {
             } else {
                 return res.status(StatusCodes.UNAUTHORIZED).end();
             }
-<<<<<<< HEAD
-=======
-
-        })
-}
-
-const passwordReset = (req, res) => {
-    const { email, password } = req.body;
-
-    let sql = `UPDATE users SET password = ?, salt=? WHERE email=?`
-
-    // 암호화된 비밀번호와 salt 값을 db에 저장한다. 
-    const salt = crypto.randomBytes(10).toString('base64')
-    const hashPassword = crypto.pbkdf2Sync(password, salt, 10000, 10, 'sha512').toString('base64')
-
-
-    let values = [hashPassword, salt, email]
-    conn.query(
-        sql, values,
-        (err, results) => {
-            if (err) {
-                console.log(err)
-                return res.status(StatusCodes.BAD_REQUEST).end();
-            }
-            if (results.affectedRows == 0) {
-                return res.status(StatusCodes.BAD_REQUEST).end()
-            } else {
-                return res.status(StatusCodes.OK).json(results)
-            }
-
-
->>>>>>> 7633904 (docs: 0411)
         }
     )
 };
